@@ -25,7 +25,7 @@ function DayItem ({entry, onSelectDate}) {
 
   return (
     <div style={styles.dayContainer} onClick={onSelectDate}>
-      <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt="Weather" />
+      <img style={styles.weather} src={`./app/images/weather-icons/${icon}.svg`} alt="Weather" />
       <h2 style={styles.subheader}>{date}</h2>
     </div>
   );

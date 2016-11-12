@@ -33,10 +33,10 @@ const ForecastContainer = React.createClass({
   },
   handleSelectDate (city, weatherData) {
     this.context.router.push({
-      pathname: '/forecast/' + this.props.routeParams.city + '/detail',
+      pathname: `/forecast/${this.props.routeParams.city}/detail`,
       state: {
-        city: city,
-        weatherData: weatherData
+        city,
+        weatherData
       }
     });
   },

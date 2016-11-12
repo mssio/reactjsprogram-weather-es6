@@ -17,10 +17,12 @@ const ForecastDetailContainer = React.createClass({
       console.log('Redirecting back to home because of empty state...');
       this.context.router.push('/');
     } else {
+      const { city, weatherData } = this.props.location.state;
+
       this.setState({
         isLoading: false,
-        city: this.props.location.state.city,
-        weatherData: this.props.location.state.weatherData
+        city,
+        weatherData
       });
     }
   },
