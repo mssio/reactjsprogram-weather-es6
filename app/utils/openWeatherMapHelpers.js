@@ -12,22 +12,20 @@ function get5DayForecastAPI (city) {
   return axios.get(_baseURL + 'forecast/daily' + _param + '&cnt=5&q=' + city);
 }
 
-export function getCurrentWeather (city) {
-  return getCurrentWeatherAPI(city)
-    .then(function (res) {
-      return res.data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+export async function getCurrentWeather (city) {
+  try {
+    const res = await getCurrentWeatherAPI(city);
+    return res.data;
+  } catch (error) {
+    console.warn('Error in openWeatherMapHelpers getCurrentWeather:',error);
+  }
 }
 
-export function get5DayForecast (city) {
-  return get5DayForecastAPI(city)
-    .then(function (res) {
-      return res.data;
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+export async function get5DayForecast (city) {
+  try {
+    const res = await get5DayForecastAPI(city);
+    return res.data;
+  } catch (error) {
+    console.warn('Error in openWeatherMapHelpers get5DayForecast:',error);
+  }
 }

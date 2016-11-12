@@ -16,18 +16,16 @@ const styles = {
   }
 }
 
-const Main = React.createClass({
-  render () {
-    return (
-      <div style={styles.container}>
-        <div style={styles.header}>
-          <h2 style={{margin: 0}}>Pawang Hujan</h2>
-          <GetCityContainer direction="row" />
-        </div>
-        {this.props.children}
+function Main ({ children }) {
+  return (
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <h2 style={{margin: 0}}>Pawang Hujan</h2>
+        <GetCityContainer direction="row" />
       </div>
-    );
-  }
-});
+      {children}
+    </div>
+  );
+}
 
 export default Main;

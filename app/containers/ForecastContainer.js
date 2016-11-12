@@ -16,20 +16,19 @@ const ForecastContainer = React.createClass({
   componentDidMount () {
     this.makeRequest(this.props.routeParams.city)
   },
-  componentWillReceiveProps (nextProps) {
-    this.setState({
+  async componentWillReceiveProps (nextProps) {
+    await this.setState({
       isLoading: true,
       weathersData: {}
-    }, this.makeRequest(nextProps.routeParams.city));
+    });
+    this.makeRequest(nextProps.routeParams.city);
   },
-  makeRequest (city) {
-    get5DayForecast(city)
-      .then((data) => {
-        this.setState({
-          isLoading: false,
-          weathersData: data
-        })
-      });
+  async makeRequest (city) {
+    const data = await get5DayForecast(city);
+    this.setState({
+      isLoading: false,
+      weathersData: data
+    });
   },
   handleSelectDate (city, weatherData) {
     this.context.router.push({
