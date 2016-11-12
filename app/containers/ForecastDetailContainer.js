@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ForecastDetail from '../components/ForecastDetail';
 
-const ForecastDetailContainer = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-  getInitialState () {
-    return {
+class ForecastDetailContainer extends Component {
+  constructor () {
+    super();
+    this.state = {
       isLoading: true,
       city: '',
       weatherData: {}
     };
-  },
+  }
   componentDidMount () {
     if (typeof(this.props.location.state) === 'undefined') {
       console.log('Redirecting back to home because of empty state...');
@@ -25,7 +23,7 @@ const ForecastDetailContainer = React.createClass({
         weatherData
       });
     }
-  },
+  }
   render () {
     return (
       <ForecastDetail
@@ -35,6 +33,10 @@ const ForecastDetailContainer = React.createClass({
       />
     );
   }
-});
+}
+
+ForecastDetailContainer.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
 export default ForecastDetailContainer;
