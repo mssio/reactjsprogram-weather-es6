@@ -1,8 +1,7 @@
-var React = require('react');
+import React from 'react';
+import GetCityContainer from '../containers/GetCityContainer';
 
-var GetCityContainer = require('../containers/GetCityContainer');
-
-var styles = {
+const styles = {
   container: {
     width: '100%',
     height: '92%'
@@ -17,7 +16,7 @@ var styles = {
   }
 }
 
-var Main = React.createClass({
+const Main = React.createClass({
   render: function () {
     return (
       <div style={styles.container}>
@@ -31,4 +30,4 @@ var Main = React.createClass({
   }
 });
 
-module.exports = Main;
+export default Main;

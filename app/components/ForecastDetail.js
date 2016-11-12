@@ -1,10 +1,9 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
-var Loading = require('./Loading');
-var DayItem = require('./DayItem');
+import Loading from './Loading';
+import DayItem from './DayItem';
 
-var styles = {
+const styles = {
   descriptionContainer: {
     fontSize: 34,
     fontWeight: 100,
@@ -14,18 +13,18 @@ var styles = {
   }
 }
 
-function ForecastDetail (props) {
-  return props.isLoading === true
+function ForecastDetail ({ isLoading, city, weatherData }) {
+  return isLoading === true
     ? <Loading />
     : (
       <div>
-        <DayItem entry={props.weatherData}/>
+        <DayItem entry={weatherData}/>
         <div style={styles.descriptionContainer}>
-          <p>{props.city}</p>
-          <p>{props.weatherData.weather[0].description}</p>
-          <p>min temp: {props.weatherData.temp.min} degrees</p>
-          <p>max temp: {props.weatherData.temp.max} degrees</p>
-          <p>humidity: {props.weatherData.humidity}</p>
+          <p>{city}</p>
+          <p>{weatherData.weather[0].description}</p>
+          <p>min temp: {weatherData.temp.min} degrees</p>
+          <p>max temp: {weatherData.temp.max} degrees</p>
+          <p>humidity: {weatherData.humidity}</p>
         </div>
       </div>
     );
@@ -37,4 +36,4 @@ ForecastDetail.propTypes = {
   weatherData: PropTypes.object.isRequired
 };
 
-module.exports = ForecastDetail;
+export default ForecastDetail;

@@ -1,9 +1,8 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
 require('../styles/loading.scss');
 
-var Loading = React.createClass({
+const Loading = React.createClass({
   render: function () {
     return (
       <div className="sampleContainer">
@@ -18,4 +17,4 @@ var Loading = React.createClass({
   }
 });
 
-module.exports = Loading;
+export default Loading;

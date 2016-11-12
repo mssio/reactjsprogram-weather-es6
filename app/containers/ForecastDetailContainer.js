@@ -1,8 +1,7 @@
-var React = require('react');
+import React from 'react';
+import ForecastDetail from '../components/ForecastDetail';
 
-var ForecastDetail = require('../components/ForecastDetail');
-
-var ForecastDetailContainer = React.createClass({
+const ForecastDetailContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -36,4 +35,4 @@ var ForecastDetailContainer = React.createClass({
   }
 });
 
-module.exports = ForecastDetailContainer;
+export default ForecastDetailContainer;

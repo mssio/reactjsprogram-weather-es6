@@ -1,8 +1,7 @@
-var React = require('react');
+import React from 'react';
+import GetCityContainer from '../containers/GetCityContainer';
 
-var GetCityContainer = require('../containers/GetCityContainer');
-
-var styles = {
+const styles = {
   container: {
     backgroundSize: 'cover',
     backgroundImage: "url('app/images/pattern.svg')",
@@ -29,4 +28,4 @@ function Home () {
   );
 };
 
-module.exports = Home;
+export default Home;

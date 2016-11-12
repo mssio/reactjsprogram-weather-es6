@@ -1,9 +1,7 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
+import { formatDate } from '../utils/dateHelpers';
 
-var formatDate = require('../utils/dateHelpers').formatDate;
-
-var styles = {
+const styles = {
   dayContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -21,12 +19,12 @@ var styles = {
   }
 }
 
-function DayItem (props) {
-  var date = formatDate(props.entry.dt);
-  var icon = props.entry.weather[0].icon;
+function DayItem ({entry, onSelectDate}) {
+  const date = formatDate(entry.dt);
+  const icon = entry.weather[0].icon;
 
   return (
-    <div style={styles.dayContainer} onClick={props.onSelectDate}>
+    <div style={styles.dayContainer} onClick={onSelectDate}>
       <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt="Weather" />
       <h2 style={styles.subheader}>{date}</h2>
     </div>
@@ -41,4 +39,4 @@ DayItem.propTypes = {
   onSelectDate: PropTypes.func
 };
 
-module.exports = DayItem;
+export default DayItem;

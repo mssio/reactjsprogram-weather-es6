@@ -1,10 +1,9 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
-var Loading = require('./Loading');
-var DayItem = require('./DayItem');
+import Loading from './Loading';
+import DayItem from './DayItem';
 
-var styles = {
+const styles = {
   container: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -26,17 +25,17 @@ function puke (obj) {
   return <pre>{JSON.stringify(obj, 2, ' ')}</pre>
 }
 
-function ForecastUI (props) {
+function ForecastUI ({ city, forecast, onSelectDate }) {
   return (
     <div>
-      <h1 style={styles.header}>{props.city}</h1>
+      <h1 style={styles.header}>{city}</h1>
       <div style={styles.container}>
-        {props.forecast.map(function (listItem) {
+        {forecast.map(function (listItem) {
           return (
             <DayItem
               key={listItem.dt}
               entry={listItem}
-              onSelectDate={props.onSelectDate.bind(null, props.city, listItem)}
+              onSelectDate={onSelectDate.bind(null, city, listItem)}
             />
           );
         })}
@@ -45,14 +44,14 @@ function ForecastUI (props) {
   );
 }
 
-function Forecast (props) {
-  return props.isLoading === true
+function Forecast ({ isLoading, weathersData, onSelectDate }) {
+  return isLoading === true
     ? <Loading />
     : (
       <ForecastUI
-        city={props.weathersData.city.name}
-        forecast={props.weathersData.list}
-        onSelectDate={props.onSelectDate}
+        city={weathersData.city.name}
+        forecast={weathersData.list}
+        onSelectDate={onSelectDate}
       />
     );
 }
@@ -63,4 +62,4 @@ Forecast.propTypes = {
   onSelectDate: PropTypes.func.isRequired
 };
 
-module.exports = Forecast;
+export default Forecast;

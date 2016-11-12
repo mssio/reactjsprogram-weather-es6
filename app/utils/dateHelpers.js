@@ -23,16 +23,10 @@ var monthsMap = [
   "Dec"
 ];
 
-function formatDate (unixTimestamp) {
+export function formatDate (unixTimestamp) {
   var date = new Date(unixTimestamp * 1000);
   var day = daysMap[date.getDay()];
   var month = monthsMap[date.getMonth()];
 
   return day + ', ' + month + ' ' + date.getDate();
 }
-
-var helpers = {
-  formatDate: formatDate
-}
-
-module.exports = helpers;

@@ -1,9 +1,9 @@
-var React = require('react');
+import React from 'react';
 
-var openWeatherMapHelpers = require('../utils/openWeatherMapHelpers');
-var Forecast = require('../components/Forecast');
+import { get5DayForecast } from '../utils/openWeatherMapHelpers';
+import Forecast from '../components/Forecast';
 
-var ForecastContainer = React.createClass({
+const ForecastContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -23,7 +23,7 @@ var ForecastContainer = React.createClass({
     }, this.makeRequest(nextProps.routeParams.city));
   },
   makeRequest: function (city) {
-    openWeatherMapHelpers.get5DayForecast(city)
+    get5DayForecast(city)
       .then(function (data) {
         this.setState({
           isLoading: false,
@@ -51,4 +51,4 @@ var ForecastContainer = React.createClass({
   }
 });
 
-module.exports = ForecastContainer;
+export default ForecastContainer;
