@@ -5,14 +5,14 @@ const ForecastDetailContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function () {
+  getInitialState () {
     return {
       isLoading: true,
       city: '',
       weatherData: {}
     };
   },
-  componentDidMount: function () {
+  componentDidMount () {
     if (typeof(this.props.location.state) === 'undefined') {
       console.log('Redirecting back to home because of empty state...');
       this.context.router.push('/');
@@ -24,7 +24,7 @@ const ForecastDetailContainer = React.createClass({
       });
     }
   },
-  render: function () {
+  render () {
     return (
       <ForecastDetail
         isLoading={this.state.isLoading}

@@ -7,31 +7,31 @@ const ForecastContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function () {
+  getInitialState () {
     return {
       isLoading: true,
       weathersData: {}
     };
   },
-  componentDidMount: function () {
+  componentDidMount () {
     this.makeRequest(this.props.routeParams.city)
   },
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps (nextProps) {
     this.setState({
       isLoading: true,
       weathersData: {}
     }, this.makeRequest(nextProps.routeParams.city));
   },
-  makeRequest: function (city) {
+  makeRequest (city) {
     get5DayForecast(city)
-      .then(function (data) {
+      .then((data) => {
         this.setState({
           isLoading: false,
           weathersData: data
         })
-      }.bind(this));
+      });
   },
-  handleSelectDate: function (city, weatherData) {
+  handleSelectDate (city, weatherData) {
     this.context.router.push({
       pathname: '/forecast/' + this.props.routeParams.city + '/detail',
       state: {
@@ -40,7 +40,7 @@ const ForecastContainer = React.createClass({
       }
     });
   },
-  render: function () {
+  render () {
     return (
       <Forecast
         isLoading={this.state.isLoading}

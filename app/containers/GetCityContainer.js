@@ -5,12 +5,12 @@ const GetCityContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getDefaultProps: function () {
+  getDefaultProps () {
     return {
       direction: 'column'
     };
   },
-  getInitialState: function () {
+  getInitialState () {
     return {
       city: ''
     };
@@ -18,18 +18,18 @@ const GetCityContainer = React.createClass({
   propTypes: {
     direction: PropTypes.string
   },
-  handleUpdateCity: function (e) {
+  handleUpdateCity (e) {
     this.setState({
       city: e.target.value
     });
   },
-  handleSubmitCity: function (e) {
+  handleSubmitCity (e) {
     e.preventDefault();
     this.context.router.push({
       pathname: '/forecast/' + this.state.city
     });
   },
-  render: function () {
+  render () {
     return (
       <GetCity
         direction={this.props.direction}

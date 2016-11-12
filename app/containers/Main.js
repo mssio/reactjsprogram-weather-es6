@@ -17,7 +17,7 @@ const styles = {
 }
 
 const Main = React.createClass({
-  render: function () {
+  render () {
     return (
       <div style={styles.container}>
         <div style={styles.header}>
